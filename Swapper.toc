@@ -1,8 +1,8 @@
 ## Interface: 11200
 ## Title: Swapper
-## Author: Gabriele Cimolino
+## Author: Gabriele Cimolino, Bugfixes CubeNicke
 ## Notes: A bag swapping tool intended for use with World of Warcraft version 1.12.1 (Vanilla)
-## Version: 1.0
+## Version: 1.1
 Libs\AceLibrary\AceLibrary.lua
 Libs\AceOO-2.0\AceOO-2.0.lua
 Libs\AceAddon-2.0\AceAddon-2.0.lua

@@ -112,7 +112,7 @@ local function findFreeSlot(bag)
 			return slot
 		end
 	end
-	return nil
+	return 0
 end
 
 function findFreeSlots(bag)
@@ -154,8 +154,8 @@ function findBagForItem(frozenBag)
 		PutItemInBackpack() 
 	else
 		for i = 1, 4 do
-			local slot = findFreeSlot(i) or 0
-			if slot > 0 and (i ~= (frozenBag or 0)) then
+			local slot = findFreeSlot(i)
+			if slot > 0 and (i ~= frozenBag) then
 				PickupContainerItem(i, slot)
 				return
 			end
