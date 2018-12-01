@@ -105,6 +105,16 @@ function linkToItemID(link)
 	return itemID
 end
 
+local function findFreeSlot(bag)
+	for slot = 1, GetContainerNumSlots(bag) do
+		local filled = GetContainerItemInfo(bag, slot)
+		if not filled then
+			return slot
+		end
+	end
+	return nil
+end
+
 function findFreeSlots(bag)
 	local freeSlots = 0
 	for slot = 1, GetContainerNumSlots(bag) do
@@ -143,9 +153,11 @@ function findBagForItem(frozenBag)
 	if findFreeSlots(0) > 0 then
 		PutItemInBackpack() 
 	else
-	 	for i = 1, 4 do
-	 		if ((findFreeSlots(i) > 0) and (i ~= frozenBag)) then
-				PutItemInBag(ContainerIDToInventoryID(i))
+		for i = 1, 4 do
+			local slot = findFreeSlot(i) or 0
+			if slot > 0 and (i ~= (frozenBag or 0)) then
+				PickupContainerItem(i, slot)
+				return
 			end
 		end
 	end
